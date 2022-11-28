@@ -1,0 +1,41 @@
+
+version: "3.8"
+services:
+  server:
+    container_name: server
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    volumes:
+      - ./server:/app/
+    ports:
+      - "9000:9000"
+    command: >
+      sh -c "node ."
+    links:
+      - mongo
+    depends_on:
+      - mongo
+  frontend:
+    container_name: frontend
+    restart: on-failure
+    build: 
+      context: .
+      dockerfile: frontend/Dockerfile
+    volumes:
+      - ./frontend:/app
+      
+    ports:
+      - "3000:3000"
+    
+    depends_on:
+      - server
+  mongo:
+    container_name: mongo
+    image: mongo
+    
+    ports:
+      - "27017:27017"
+    
+    

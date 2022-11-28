@@ -1,0 +1,30 @@
+
+version: "3.8"
+services:
+  ws:
+    container_name: server
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    volumes:
+      - ./server:/app/
+    ports:
+      - "9000:9000"
+    command: >
+      sh -c "node ."
+  frontend:
+    container_name: frontend
+    restart: on-failure
+    build: 
+      context: .
+      dockerfile: frontend/Dockerfile
+    volumes:
+      - ./frontend:/app
+      
+    ports:
+      - "8080:3000"
+      
+    
+    depends_on:
+      - ws

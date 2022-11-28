@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongod": "^2.0.0",
+    "mongoose": "^6.7.2",
+    "socket.io": "^4.5.3",
+    "ws": "^8.11.0",
+    "wss": "^3.3.4"
+  }
+}
